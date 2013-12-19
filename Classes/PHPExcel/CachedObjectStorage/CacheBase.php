@@ -152,7 +152,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase {
      */
 	public function deleteCacheData($pCoord) {
 		if ($pCoord === $this->_currentObjectID) {
-			$this->_currentObject->detach();
+			if ($this->_currentObject)
+				$this->_currentObject->detach();
 			$this->_currentObjectID = $this->_currentObject = null;
 		}
 
